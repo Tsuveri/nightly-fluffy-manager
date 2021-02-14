@@ -8,12 +8,12 @@ from discord.ext import commands
 
 @commands.command()
 async def nou(ctx):
-    ctx.send("no u")
+    await ctx.send("no u")
     pass
 
 @commands.command()
 async def ping(ctx):
-    ctx.send("pong!")
+    await ctx.send("pong!")
     pass
 
 @commands.command()
