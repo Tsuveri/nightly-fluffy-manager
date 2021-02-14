@@ -32,7 +32,7 @@ config_path = ""
 with open(config_path, "rb") as config_file:
     config = json.load(config_file)
 
-nightly_fluffy_manager = commands.Bot(command_prefix=config["command_prefix"], description=config["description"], intents=config["intents"])
+nightly_fluffy_manager = commands.Bot(command_prefix=config["command_prefix"], description=config["description"], intents=discord.Intents.default())
 
 nightly_fluffy_manager.add_command(test_commands.nou)
 nightly_fluffy_manager.add_command(test_commands.ping)
