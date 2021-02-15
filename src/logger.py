@@ -27,6 +27,6 @@ if not os.path.exists(output_folder + "/command_logs.txt"):
 
 async def log(ctx, *args):
     with open(output_folder + "/command_logs.txt", 'a') as log_file:
-        log_file.write("[" + datetime.today().strftime('%Y-%m-%d-%H:%M:%S') + "] - " + str(ctx.author.name) + " (" + str(ctx.author.id) + ") executed command: {" + str(ctx.command.name) + "} with the following arguments:{0} | Raw message content:{1}".format(locals()["args"], str(ctx.message.content)))
+        log_file.write("[" + datetime.today().strftime('%Y-%m-%d-%H:%M:%S') + "] - " + str(ctx.author.name) + " (" + str(ctx.author.id) + ") executed command: [" + str(ctx.command.name) + "] with the following arguments: {0} | Raw message content: {1} ".format(str(locals()["args"]), str(ctx.message.content)))
     pass
 
