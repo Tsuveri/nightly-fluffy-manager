@@ -6,6 +6,15 @@ import discord
 from discord.ext import commands
 import sys
 
+
+try:
+    from permissions_commands import perms_canExec
+except (ModuleNotFoundError, ImportError) as e:
+    print("{} failure".format(type(e)))
+else:
+    print("Import succeeded")
+
+
 try:
     # The insertion index should be 1 because index 0 is this file
     sys.path.insert(1, "../")  # the type of path is string
@@ -18,6 +27,7 @@ else:
 
 @commands.command()
 async def nou(ctx):
+    await perms_canExec(ctx)
     await ctx.send("no u")
     if globals.logging_enabled:
         await logger.log(ctx)
@@ -25,6 +35,7 @@ async def nou(ctx):
 
 @commands.command()
 async def ping(ctx):
+    await perms_canExec(ctx)
     await ctx.send("pong!")
     if globals.logging_enabled:
         await logger.log(ctx)
@@ -32,6 +43,7 @@ async def ping(ctx):
 
 @commands.command()
 async def create_channel(ctx):
+    await perms_canExec(ctx)
     guild = ctx.message.guild
     await guild.create_text_channel("test1")
     if globals.logging_enabled:

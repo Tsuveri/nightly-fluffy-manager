@@ -22,7 +22,7 @@ try:
     # The insertion index should be 1 because index 0 is this file
     sys.path.insert(1, "./commands/")  # the type of path is string
     # Import commands here
-    import test_commands
+    import test_commands, permission_commands
 except (ModuleNotFoundError, ImportError) as e:
     print("{} failure".format(type(e)))
 else:
@@ -37,5 +37,6 @@ nightly_fluffy_manager = commands.Bot(command_prefix=config["command_prefix"], d
 nightly_fluffy_manager.add_command(test_commands.nou)
 nightly_fluffy_manager.add_command(test_commands.ping)
 nightly_fluffy_manager.add_command(test_commands.create_channel)
+nightly_fluffy_manager.add_command(permission_commands.permissions)
 
 nightly_fluffy_manager.run(config["token"])
