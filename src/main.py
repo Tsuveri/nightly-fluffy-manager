@@ -10,6 +10,13 @@ import discord
 from discord.ext import commands
 import random, json, sys
 
+try:
+    import globals
+except (ModuleNotFoundError, ImportError) as e:
+    print("{} failure".format(type(e)))
+else:
+    print("Import succeeded")
+
 
 try:
     # The insertion index should be 1 because index 0 is this file
@@ -22,14 +29,7 @@ else:
     print("Import succeeded")
 
 
-# Variables
-
-# Config must be a json file
-config_path = ""
-
-
-# Exec
-with open(config_path, "rb") as config_file:
+with open(globals.config_path, "rb") as config_file:
     config = json.load(config_file)
 
 nightly_fluffy_manager = commands.Bot(command_prefix=config["command_prefix"], description=config["description"], intents=discord.Intents.default())
